@@ -1,0 +1,30 @@
+# Environment & secrets
+.env
+credentials.json
+service_account.json
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+
+# Cursor
+.cursor/
+
+# SoundCloud tokens & caches
+.soundcloud_token.json
+.soundcloud_user_token.json
+.soundcloud_ai_tags.json
+.soundcloud_ai_descriptions.json
+
+# Google Drive cache
+.drive_folders.json
+
+# Runtime data
+release_queue.json
+tag_changes_*.csv
+generate_debug.log
+pipeline.log
