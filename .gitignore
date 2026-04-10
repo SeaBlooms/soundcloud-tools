@@ -26,5 +26,6 @@ __pycache__/
 # Runtime data
 release_queue.json
 tag_changes_*.csv
+playlists.csv
 generate_debug.log
 pipeline.log
