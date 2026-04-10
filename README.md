@@ -154,5 +154,3 @@ Delete these files to force a full re-generation.
 **Read operations** (fetching tracks) use a Client Credentials token — no browser interaction needed.
 
 **Write operations** (pushing tags, descriptions, playlists, uploads) require a user token obtained via Authorization Code + PKCE. The first time you perform a write, a browser window opens for you to authorize the app. The token is cached in `.soundcloud_user_token.json` and refreshed automatically.
-
-test
