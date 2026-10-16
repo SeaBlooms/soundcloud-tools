@@ -82,7 +82,25 @@ python3 playlist_generator.py --dry-run         # preview without pushing
 
 The tool matches existing playlists by title — if a match exists it updates; otherwise it creates a new one. Playlists are created with a single track first, then populated via update, to work around SoundCloud's undocumented track-count limit on playlist creation.
 
-### 3. Upload Pipeline (planned)
+### 3. Playlist Reorder (CLI)
+
+Reorder an existing playlist's tracks by play count. Tied tracks keep their previous relative order.
+
+```bash
+python3 reorder_playlist.py https://soundcloud.com/user/sets/playlist
+python3 reorder_playlist.py https://soundcloud.com/user/sets/playlist --dry-run
+python3 reorder_playlist.py https://soundcloud.com/user/sets/playlist --asc
+```
+
+| Flag | Purpose |
+|------|---------|
+| *(url)* | SoundCloud playlist URL |
+| `--dry-run` | Print the new order without pushing |
+| `--asc` | Least-played first (default is most-played first) |
+
+The tool resolves the playlist, sorts by `playback_count`, and updates only the track order — title, description, and tags are left unchanged.
+
+### 4. Upload Pipeline (planned)
 
 An automated bi-weekly release pipeline using Google Drive as the source and SoundCloud as the destination. See `.cursor/plans/bi-weekly_upload_pipeline_bdf9aa90.plan.md` for the full architecture.
 
@@ -130,6 +148,7 @@ cp .env.example .env
 soundcloud-tools/
 ├── manage_tracks.py          # Track Manager TUI (Textual)
 ├── playlist_generator.py     # Playlist creator/updater from CSV
+├── reorder_playlist.py       # Reorder an existing playlist by play count
 ├── soundcloud_api.py         # SoundCloud API client (OAuth, CRUD, playlists)
 ├── tag_generator.py          # AI tag generation (Anthropic Claude)
 ├── description_generator.py  # AI description generation (Anthropic Claude)
