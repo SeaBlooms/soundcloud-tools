@@ -27,6 +27,7 @@ Rules:
 - Be purely descriptive: talk about texture, rhythm, mood, and sonic character
 - Do NOT mention influences, other artists, or genre history
 - Do NOT use clichés like "take you on a journey" or "sonic landscape"
+- Do NOT use the word "murk" (or "murky")
 - Match the tone to the track's mood — dark tracks get darker language, bright ones get lighter
 - Reference production qualities where appropriate (e.g. tape hiss, analog warmth, \
 clipped drums, sidechained pads) but keep it natural, not a gear list

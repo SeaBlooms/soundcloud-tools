@@ -15,6 +15,9 @@ DEFAULT_STYLE_POOL = (
     "Vaporwave,Synthwave"
 )
 
+BLOCKED_TAGS = {"bedroom producer", "underground house"}
+
+
 SYSTEM_PROMPT = """\
 You are a SoundCloud tag optimization expert. Given metadata about a music track, \
 generate 10-15 highly relevant tags that will maximize discoverability.
@@ -23,7 +26,7 @@ Tag categories to include:
 - Genre tags (from the artist's style pool provided)
 - Mood/atmosphere tags (e.g. dreamy, dark, uplifting, melancholic)
 - Production style tags (e.g. glitchy, sample-heavy, analog, layered)
-- Scene/community tags (e.g. underground, bedroom producer, netlabel)
+- Scene/community tags (e.g. underground, netlabel)
 - Tempo/energy tags when relevant (e.g. slow burn, high energy)
 
 Rules:
@@ -31,6 +34,7 @@ Rules:
 - Prefer lowercase tags
 - Multi-word tags are fine (they'll be quoted automatically)
 - Do NOT repeat the track title or artist name as a tag
+- NEVER use these tags: "bedroom producer", "underground house"
 - Return ONLY a JSON array of strings, no other text"""
 
 
@@ -111,7 +115,11 @@ class TagGenerator:
         except json.JSONDecodeError:
             tags = [t.strip().strip('"') for t in text.split(",") if t.strip()]
 
-        return [str(t) for t in tags if t]
+        return [
+            str(t)
+            for t in tags
+            if t and str(t).strip().lower() not in BLOCKED_TAGS
+        ]
 
     def generate_tags_batch(
         self,
